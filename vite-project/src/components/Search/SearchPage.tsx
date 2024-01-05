@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
     Card,
     Input,
@@ -13,20 +13,14 @@ interface SearchableTableProps {
 }
 
 const SearchableTable: React.FC<SearchableTableProps> = ({ loggedIn }) => {
-  const [dogs, setDogs] = useState<any>([]);
+//   const [dogs, setDogs] = useState<any>([]);
   const navigate = useNavigate();
-  const [breeds, setBreeds] = useState<string[]>([]);
+//   const [breeds, setBreeds] = useState<string[]>([]);
   const [breed, setBreed] = useState<any>([]);
   const [zipCode, setZipCode] = useState<any>(Number);
   const [ageMin, setAgeMin] = useState<any>('');
   const [ageMax, setAgeMax] = useState<any>('');
-  const [dogDetails, setDogDetails] = useState<any>({});
-//   const [searchParams, setSearchParams] = useState({
-//     breeds: [String],
-//     zipCodes: [],
-//     ageMin: null,
-//     ageMax: null,
-//   });
+//   const [dogDetails, setDogDetails] = useState<any>({});
   useEffect(() => {
     console.log('what does localstorage have? ', localStorage.getItem('isLoggedIn'))
     !loggedIn ? navigate('/login') : null
@@ -37,8 +31,8 @@ const SearchableTable: React.FC<SearchableTableProps> = ({ loggedIn }) => {
             //   params: searchParams,
               withCredentials: true,
             });
-      
-            setBreeds(response.data);
+            console.log(response)
+            // setBreeds(response.data);
           } catch (error) {
             console.error('Error searching for dog breeds:', error);
           }
@@ -52,7 +46,7 @@ const SearchableTable: React.FC<SearchableTableProps> = ({ loggedIn }) => {
         const response = await axios.post('https://frontend-take-home-service.fetch.com/dogs', dogIds, {
           withCredentials: true,
         });
-        setDogDetails(response.data); 
+        // setDogDetails(response.data); 
         if(response.data.length > 0) {
             navigate('/dogs', {state:{dogs: response.data}}); 
         }
@@ -73,7 +67,7 @@ const SearchableTable: React.FC<SearchableTableProps> = ({ loggedIn }) => {
             },
             withCredentials: true,
         });
-        setDogs({dogs: response.data.resultIds});
+        // setDogs({dogs: response.data.resultIds});
         getDogDetails(response.data.resultIds);
     } catch (error) {
       console.error('Error searching for dogs:', error);
@@ -144,6 +138,7 @@ const SearchableTable: React.FC<SearchableTableProps> = ({ loggedIn }) => {
                     crossOrigin={'http'}
                     size="lg"
                     style={{height: '30px'}}
+                    onChange={(e) => setAgeMax(e.target.value)}
                     placeholder="12"
                     className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
                     labelProps={{

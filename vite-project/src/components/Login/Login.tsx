@@ -1,17 +1,9 @@
 import { useState } from 'react'
 import './Login.css'
-import { BrowserRouter as Routers, Routes , Route, Navigate, useNavigate } from 'react-router-dom'
-import HomePage from '../Home/Home'
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
-import { ToastContainer, toast } from "react-toastify";
-// import { CookiesProvider, useCookies } from "react-cookie";
-// import Cookies from 'universal-cookie';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-interface LoginProps {
-    setLoggedIn: React.Dispatch<React.SetStateAction<boolean | null>>;
-}
 const Login: React.FC = () => {
 
     const [email, setEmail] = useState("")

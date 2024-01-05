@@ -1,15 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
-    // Card,
-    Input,
-    Checkbox,
     Spinner
-    // Button,
-    // Typography,
   } from "@material-tailwind/react";
-import { Card, Grid, CardActionArea, CardContent, Typography, Button, CardMedia } from '@mui/material';
+import { Card, Grid, CardActionArea, CardContent, Typography, CardMedia } from '@mui/material';
 
 interface SearchableTableProps {
     loggedIn: boolean;

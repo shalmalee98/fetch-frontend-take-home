@@ -3,9 +3,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import SearchableTable from '../Search/SearchPage';
 
-interface HomeProps {
-    setLoggedIn: React.Dispatch<React.SetStateAction<boolean | null>>;
-}
+// interface HomeProps {
+//     setLoggedIn: React.Dispatch<React.SetStateAction<boolean | null>>;
+// }
 // const Home: React.FC<HomeProps> = ({ setLoggedIn }) => {
 const Home: React.FC = () => {
     const navigate = useNavigate();
