@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Login from '../src/components/Login/Login';
 import Home from '../src/components/Home/Home';
 import DogCards from './components/Search/DogCards';
@@ -20,6 +20,7 @@ const App: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/dogs" element={<DogCards loggedIn={loggedIn} />} />
         <Route path="/home" element={<Home/>} />
+        <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
   );
